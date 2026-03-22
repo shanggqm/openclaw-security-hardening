@@ -27,23 +27,26 @@
 
 ## 安装
 
-### 方式一：ClawHub（推荐）
+### 方式一：npm 安装（推荐）
 
 ```bash
-npx clawhub install openclaw-security-hardening
+openclaw skills install npm:openclaw-security-hardening
 ```
 
-### 方式二：手动安装
+### 方式二：一句话让龙虾自己装
+
+直接对你的龙虾说：
+
+> 帮我安装这个安全体检 skill：npm:openclaw-security-hardening ，装完直接帮我做一次安全体检。
+
+### 方式三：手动安装
 
 ```bash
-# Clone 到 skills 目录
+# 下载并解压到 skills 目录
 cd ~/.openclaw/skills
-git clone https://github.com/anthropics/openclaw-security-hardening.git security-hardening
-
-# 或者直接复制 SKILL.md
-mkdir -p ~/.openclaw/skills/security-hardening
-curl -o ~/.openclaw/skills/security-hardening/SKILL.md \
-  https://raw.githubusercontent.com/anthropics/openclaw-security-hardening/main/SKILL.md
+mkdir -p security-hardening && cd security-hardening
+npm pack openclaw-security-hardening && tar xzf openclaw-security-hardening-*.tgz --strip-components=1 package/
+rm -f openclaw-security-hardening-*.tgz
 ```
 
 安装后重启 Gateway：

@@ -1,0 +1,26 @@
+{
+  "name": "openclaw-security-hardening",
+  "version": "1.0.0",
+  "description": "OpenClaw security audit & hardening skill — scan config, generate report, guided fix in 3 tiers",
+  "keywords": [
+    "openclaw",
+    "security",
+    "audit",
+    "hardening",
+    "skill",
+    "lobster",
+    "agent"
+  ],
+  "author": "shanggqm",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shanggqm/openclaw-security-hardening"
+  },
+  "homepage": "https://github.com/shanggqm/openclaw-security-hardening#readme",
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ]
+}
