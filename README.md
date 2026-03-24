@@ -1,19 +1,91 @@
-# 🦞🔒 OpenClaw Security Hardening Skill
+# 🦞🔒 OpenClaw Security — 安全加固全家桶
 
-一句话让你的龙虾完成安全自检和加固。来自[「OpenClaw 深度连载」安全篇](https://mp.weixin.qq.com/)。
+让你的龙虾从裸奔到全副武装。
 
-## 这是什么？
+**Skill + 文章 + 教程 + 资源**，一个仓库搞定 OpenClaw 安全加固的一切。
 
-一个 prompt-only 的 OpenClaw Skill，安装后对你的龙虾说一句「安全检查」，Agent 就会自动：
+---
 
-1. **🔍 扫描** — 读取 `openclaw.json`，对 7 大安全维度逐项审计
-2. **📊 报告** — 输出带评分的安全报告（0-100 分），每项标注 ✅ PASS / ⚠️ WARN / 🔴 FAIL
-3. **💡 方案** — 根据扫描结果生成三档加固方案（基础 / 标准 / 严格）
-4. **🔧 执行** — 你选定方案后，Agent 自动修改配置并验证
+## 📚 安全连载文章
 
-**零脚本、零依赖**，纯靠 Agent 的内置工具（read/edit/exec）完成所有操作。
+来自「OpenClaw 深度连载 · 安全篇」公众号系列，从零建立安全认知。
 
-## 检查项
+| # | 标题 | 一句话简介 | 状态 |
+|---|------|----------|------|
+| 1 | [你的龙虾正在裸奔吗？](articles/01-lobster-naked/) | 全局安全概览：跑一次 audit，看看你的龙虾到底有多危险 | ✅ 已发布 |
+| 2 | [安全加固的三层盔甲](articles/02-three-layers-armor/) | 安全心智模型：门禁→权限→围栏，三层防护框架 | ✅ 已发布 |
+| 3 | 守好门：只让对的人跟你的龙虾说话 | 实战配置 allowlist、pairing、requireMention | 📝 计划中 |
+| 4 | TBD | TBD | 📝 计划中 |
+| 5 | TBD | TBD | 📝 计划中 |
+
+---
+
+## 🛠️ Skills
+
+开箱即用的安全加固 Skill，装上就能让龙虾自己做安全检查。
+
+| Skill | 说明 | 安装方式 |
+|-------|------|---------|
+| [security-audit](skills/security-audit/) | 一句话安全体检 + 三档加固方案 | `openclaw skills install npm:openclaw-security-hardening` |
+
+> 💡 更多 Skill 陆续开发中（权限最小化助手、沙箱配置向导等）
+
+### 快速安装
+
+```bash
+openclaw skills install npm:openclaw-security-hardening
+```
+
+安装后对你的龙虾说：
+
+> 「安全检查」
+
+Agent 会自动扫描配置、输出评分报告、给出三档加固方案。详见 [Skill 文档](skills/security-audit/)。
+
+---
+
+## 📖 教程 & 文档
+
+| 文档 | 说明 | 状态 |
+|------|------|------|
+| [威胁模型速查](docs/threat-model.md) | OpenClaw 面临的安全威胁全景 | 🚧 编写中 |
+
+> 更多教程和最佳实践文档持续更新中。
+
+---
+
+## 📦 资源
+
+安全加固相关的配置模板、检查清单等资源。
+
+> 🚧 Coming soon — 欢迎 PR 贡献你的安全配置模板！
+
+---
+
+## 🗺️ Roadmap
+
+- [x] security-audit Skill：一键安全体检 + 三档加固
+- [x] 安全连载文章（第 1-2 篇）
+- [ ] 安全连载文章（第 3-5 篇）
+- [ ] 威胁模型文档
+- [ ] 权限最小化助手 Skill
+- [ ] 沙箱配置向导 Skill
+- [ ] 安全配置模板库
+- [ ] 安全加固 checklist（可打印版）
+
+---
+
+## 🤝 贡献
+
+欢迎任何形式的贡献：
+
+- **发现安全问题？** 提 Issue
+- **有加固经验？** 写文章 PR 到 `articles/`
+- **想做新 Skill？** 放到 `skills/` 下，附 SKILL.md + README
+
+---
+
+## 📊 安全检查项总览
 
 | # | 检查项 | 风险等级 | 说明 |
 |---|--------|---------|------|
@@ -25,121 +97,16 @@
 | 6 | 文件权限 | 🟡 中 | 配置文件的 chmod 权限 |
 | 7 | 模型安全 | 🟠 高 | 有工具权限的 Agent 是否用了小模型 |
 
-## 安装
-
-### 方式一：npm 安装（推荐）
-
-```bash
-openclaw skills install npm:openclaw-security-hardening
-```
-
-### 方式二：一句话让龙虾自己装
-
-直接对你的龙虾说：
-
-> 帮我安装这个安全体检 skill：npm:openclaw-security-hardening ，装完直接帮我做一次安全体检。
-
-### 方式三：手动安装
-
-```bash
-# 下载并解压到 skills 目录
-cd ~/.openclaw/skills
-mkdir -p security-hardening && cd security-hardening
-npm pack openclaw-security-hardening && tar xzf openclaw-security-hardening-*.tgz --strip-components=1 package/
-rm -f openclaw-security-hardening-*.tgz
-```
-
-安装后重启 Gateway：
-
-```bash
-openclaw gateway restart
-```
-
-验证安装：
-
-```bash
-openclaw skills list | grep security
-```
-
-## 使用方法
-
-对你的龙虾说以下任意一句话：
-
-- 「安全检查」
-- 「security check」
-- 「帮我做个安全审计」
-- 「harden my setup」
-- 「安全扫描」
-
-Agent 会自动开始扫描并输出报告。
-
-## 示例输出
-
-### 扫描报告
-
-```
-🦞🔒 OpenClaw 安全扫描报告
-
-扫描时间：2026-03-22 09:00
-配置文件：~/.openclaw/openclaw.json
-
-📊 总览
-
-| 安全评分 | 65 / 100 |
-|---------|----------|
-| 🔴 FAIL | 1 项     |
-| ⚠️ WARN | 3 项     |
-| ✅ PASS | 3 项     |
-
-📋 详细结果
-
-| # | 检查项          | 风险等级 | 结果 | 说明                              |
-|---|----------------|---------|------|-----------------------------------|
-| 1 | DM 策略         | 🔴 极高 | ✅   | allowlist，已配置白名单              |
-| 2 | Gateway 网络暴露 | 🔴 极高 | ⚠️   | bind=lan，但 auth 已配置 token      |
-| 3 | 群聊安全         | 🟠 高  | ✅   | groupPolicy=allowlist，已配置白名单   |
-| 4 | 工具权限         | 🟠 高  | ⚠️   | 3 个 agent 有 full profile         |
-| 5 | 沙箱配置         | 🟡 中  | 🔴   | 未配置沙箱                          |
-| 6 | 文件权限         | 🟡 中  | ⚠️   | 目录权限 755，建议收紧到 700          |
-| 7 | 模型安全         | 🟠 高  | ✅   | 所有有工具权限的 agent 使用大模型      |
-```
-
-### 加固方案选择
-
-```
-请选择加固方案：
-
-🟢 输入 1 → 基础加固（快速修复最危险的问题）
-🟡 输入 2 → 标准加固（推荐！兼顾安全与易用）
-🔴 输入 3 → 严格加固（最高安全，适合公网部署）
-
-或输入 0 → 仅查看报告，不执行加固
-```
-
-## 三档加固方案
-
-| 方案 | 耗时 | 适合场景 |
-|------|------|---------|
-| 🟢 基础加固 | ~5 分钟 | 修复最危险的问题（DM 策略、Gateway Auth、文件权限） |
-| 🟡 标准加固 | ~10 分钟 | 基础 + 群聊保护 + 沙箱 + 工具权限按角色分配 |
-| 🔴 严格加固 | ~15 分钟 | 标准 + 全面沙箱化 + 最小权限 + Gateway loopback |
-
-## 技术细节
-
-这是一个 **prompt-only skill**（纯 SKILL.md），不包含任何脚本。所有操作通过 Agent 的内置工具完成：
-
-- `read` — 读取配置文件
-- `exec` — 检查文件权限、备份配置、重启 Gateway
-- `edit` — 精确修改配置项
-
-Agent 会在修改前自动备份配置文件，加固后重新扫描确认。
+---
 
 ## 致谢
 
-本 Skill 的安全检查逻辑来自「OpenClaw 深度连载」安全篇的实战经验。感谢社区的安全反馈。
+- [OpenClaw](https://github.com/openclaw/openclaw) — 让 AI Agent 触手可及
+- 「OpenClaw 深度连载」安全篇的读者们
+- 社区的安全反馈和贡献
 
 龙虾要安全，安全了才能快乐地夹人 🦞✨
 
 ## License
 
-MIT
+[MIT](LICENSE)
