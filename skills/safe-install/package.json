@@ -1,0 +1,28 @@
+{
+  "name": "openclaw-safe-install",
+  "version": "1.0.0",
+  "description": "Safely review and install third-party OpenClaw Skills with automated 7-point security audit",
+  "keywords": [
+    "openclaw",
+    "security",
+    "safe-install",
+    "skill",
+    "audit",
+    "review",
+    "lobster",
+    "agent",
+    "supply-chain"
+  ],
+  "author": "shanggqm",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shanggqm/openclaw-security-hardening",
+    "directory": "skills/safe-install"
+  },
+  "homepage": "https://github.com/shanggqm/openclaw-security-hardening#safe-install",
+  "files": [
+    "SKILL.md",
+    "README.md"
+  ]
+}

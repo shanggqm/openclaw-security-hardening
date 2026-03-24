@@ -1,15 +1,28 @@
 # 🦞🔒 OpenClaw Security Hardening
 
-一句话让你的龙虾完成安全自检和加固。来自[「OpenClaw 深度连载」安全篇](https://mp.weixin.qq.com/)。
+OpenClaw 安全生态：配置安全审计、第三方 Skill 安全审查、安全连载文章。来自[「OpenClaw 深度连载」安全篇](https://mp.weixin.qq.com/)。
 
 ## 这是什么？
 
-一个 prompt-only 的 OpenClaw Skill，安装后对你的龙虾说一句「安全检查」，Agent 就会自动：
+一个 OpenClaw 安全 Skill 合集，包含两个 prompt-only Skill：
+
+### 🔍 Security Audit — 配置安全体检
+
+说一句「安全检查」，Agent 就会自动：
 
 1. **🔍 扫描** — 读取 `openclaw.json`，对 7 大安全维度逐项审计
 2. **📊 报告** — 输出带评分的安全报告（0-100 分），每项标注 ✅ PASS / ⚠️ WARN / 🔴 FAIL
 3. **💡 方案** — 根据扫描结果生成三档加固方案（基础 / 标准 / 严格）
 4. **🔧 执行** — 你选定方案后，Agent 自动修改配置并验证
+
+### 🔒 Safe Install — 第三方 Skill 安全审查
+
+说一句「帮我装 xxx skill」，Agent 不会直接安装，而是：
+
+1. **📥 隔离下载** — 下载到 /tmp 临时目录
+2. **🔍 7 项审查** — 外发数据、凭证读取、危险命令、伪装行为、权限提升、隐蔽指令、脚本文件
+3. **📊 审查报告** — 每项标注 ✅ 安全 / ⚠️ 可疑 / 🔴 危险
+4. **✅ 决策** — 安全→自动装，可疑→用户确认，危险→直接拒绝
 
 **零脚本、零依赖**，纯靠 Agent 的内置工具（read/edit/exec）完成所有操作。
 
@@ -153,6 +166,7 @@ Agent 会在修改前自动备份配置文件，加固后重新扫描确认。
 ## 🗺️ Roadmap
 
 - [x] security-audit Skill：一键安全体检 + 三档加固
+- [x] safe-install Skill：第三方 Skill 安全审查与安装
 - [x] 安全连载（第 1-2 篇：配置安全）
 - [x] 安全连载（第 3 篇：Prompt Injection）
 - [ ] 安全连载（第 4 篇：信任链与模型安全）

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-03-25
+
+### Added
+- **safe-install Skill**: Automated 7-point security review for third-party Skill installation
+  - Downloads to isolated /tmp directory before any review
+  - Checks: outbound data, credential access, dangerous exec, disguised behavior, privilege escalation, hidden instructions, script files
+  - Generates human-readable audit report with ✅/⚠️/🔴 ratings
+  - Auto-installs safe Skills, asks user confirmation for suspicious ones, rejects dangerous ones
+- Updated README with safe-install Skill description and roadmap
+
 ## [1.1.0] - 2026-03-24
 
 ### Added
