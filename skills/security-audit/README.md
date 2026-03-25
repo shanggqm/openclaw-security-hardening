@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-openclaw skills install npm:openclaw-security-hardening
+openclaw skills install npm:guomeiqing-security-audit
 ```
 
 ## 使用

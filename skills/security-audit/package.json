@@ -1,6 +1,6 @@
 {
-  "name": "openclaw-security-hardening",
-  "version": "1.1.0",
+  "name": "guomeiqing-security-audit",
+  "version": "1.3.0",
   "description": "OpenClaw security audit & hardening skill — scan config, generate report, guided fix in 3 tiers",
   "keywords": [
     "openclaw",

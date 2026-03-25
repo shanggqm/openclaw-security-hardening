@@ -1,5 +1,5 @@
 ---
-name: security-hardening
+name: guomeiqing-security-audit
 description: Scan your OpenClaw configuration for security risks and harden it with guided fixes. Supports three hardening levels. Use when asked to "security check", "安全检查", "security audit", "harden my setup", "安全加固", or "安全扫描".
 ---
 

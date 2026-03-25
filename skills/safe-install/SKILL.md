@@ -1,5 +1,5 @@
 ---
-name: safe-install
+name: guomeiqing-safe-install
 description: Safely review and install third-party OpenClaw Skills. Downloads to a temp directory, runs a 7-point security audit, generates a human-readable report, and only installs if safe. Use when asked to "安装 skill", "install skill", "帮我装", "add skill", or "safe install".
 ---
 

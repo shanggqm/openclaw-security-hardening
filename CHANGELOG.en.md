@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Skill Rename**: `safe-install` → `guomeiqing-safe-install` (SKILL.md name + package.json)
 
 ### Added
-- **Article #4**: 你装的 Skill 安全吗？——信任链与模型安全 (text + images placeholder)
+- **Article #4**: Are Your Installed Skills Safe? — Trust Chain & Model Security (text + images placeholder)
 - **English translations** for all documentation and articles (`.en.md` files)
 - Language switcher links in root README (🇬🇧/🇨🇳)
 
@@ -29,8 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 - Repository restructured as security ecosystem (skills + articles + docs + resources)
-- Article #1: 你的龙虾正在裸奔吗？ (text + 5 illustrations)
-- Article #2: 安全加固的三层盔甲 (text + 5 illustrations)
+- Article #1: Is Your Lobster Running Naked? (text + 5 illustrations)
+- Article #2: Three Layers of Security Armor (text + 5 illustrations)
 - Articles index (`articles/README.md`)
 - Threat model placeholder (`docs/threat-model.md`)
 - CONTRIBUTING.md with contribution guidelines

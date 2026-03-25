@@ -1,6 +1,6 @@
 {
-  "name": "openclaw-safe-install",
-  "version": "1.0.0",
+  "name": "guomeiqing-safe-install",
+  "version": "1.3.0",
   "description": "Safely review and install third-party OpenClaw Skills with automated 7-point security audit",
   "keywords": [
     "openclaw",
