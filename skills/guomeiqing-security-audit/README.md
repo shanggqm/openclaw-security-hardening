@@ -1,4 +1,4 @@
-# 🦞🔒 Security Audit Skill
+# 🦞🔒 guomeiqing-security-audit
 
 一句话让你的龙虾完成安全自检和加固。
 

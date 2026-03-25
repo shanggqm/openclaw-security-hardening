@@ -295,7 +295,7 @@ Theory covered. Let's talk defense.
 
 A better approach: **Let AI review AI's extensions.**
 
-We're developing a `safe-install` Skill (coming soon to the openclaw-security-hardening repository) that works like this:
+We're developing a `guomeiqing-safe-install` Skill (coming soon to the openclaw-security-hardening repository) that works like this:
 
 1. You say "install xxx skill for me"
 2. The Agent first downloads the Skill to a **temporary directory** (not the workspace)
@@ -306,7 +306,7 @@ We're developing a `safe-install` Skill (coming soon to the openclaw-security-ha
 
 **Let machines do what machines are good at — reading through hundreds of lines of SKILL.md word by word. Humans don't need to be part of that process.**
 
-Before `safe-install` goes live, you can also check manually:
+Before `guomeiqing-safe-install` goes live, you can also check manually:
 
 ```bash
 # See what Skills you have installed
@@ -337,7 +337,7 @@ This one deserves to be carved on a wall:
 | Pure chat (no tools) | Any small model works | messaging or lower |
 | Agent processing external content | Must use large model | Tightened, no exec |
 
-OpenClaw's security-audit check item 7 specifically detects the dangerous combination of "small model + tool permissions." Run it once and you'll know if you're affected.
+OpenClaw's guomeiqing-security-audit check item 7 specifically detects the dangerous combination of "small model + tool permissions." Run it once and you'll know if you're affected.
 
 ### 4. Skill Permission Isolation
 
@@ -376,7 +376,7 @@ Even if `email-handler` has third-party Skills installed, it doesn't matter — 
 
 ## One-Click Health Check: Are Your Skills Safe?
 
-Every article in this series ends with this recommendation, because it genuinely works — I've packaged the security expertise from these articles into an open-source security-audit Skill.
+Every article in this series ends with this recommendation, because it genuinely works — I've packaged the security expertise from these articles into an open-source guomeiqing-security-audit Skill.
 
 Of the 7 dimensions it scans:
 
@@ -410,7 +410,7 @@ The first line shows how many third-party Skills you have installed. The second 
 
 If grep outputs anything, take a careful look — most results are probably normal functionality, but if you spot an unfamiliar URL or suspicious data collection behavior, you've just dodged a bullet.
 
-Of course, **we'd prefer you not have to do this manually in the future.** The `safe-install` Skill is under development, and once it's live, your Lobster will automatically run a security check before installing any new Skill. Follow the [openclaw-security-hardening](https://github.com/shanggqm/openclaw-security-hardening) repository for updates.
+Of course, **we'd prefer you not have to do this manually in the future.** The `guomeiqing-safe-install` Skill is under development, and once it's live, your Lobster will automatically run a security check before installing any new Skill. Follow the [openclaw-security-hardening](https://github.com/shanggqm/openclaw-security-hardening) repository for updates.
 
 In the next article, we'll discuss privacy fencing — what secrets are stored in your MEMORY.md? Could the Lobster accidentally spill them in a group chat? How data enters, how it's stored, and how it exits — there are pitfalls at every stage.
 

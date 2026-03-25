@@ -8,7 +8,7 @@ OpenClaw security ecosystem: configuration security audit, third-party Skill sec
 
 A collection of OpenClaw security Skills, containing two prompt-only Skills:
 
-### 🔍 Security Audit — Configuration Health Check
+### 🔍 guomeiqing-security-audit — Configuration Health Check
 
 Just say "security check" and the Agent will automatically:
 
@@ -17,7 +17,7 @@ Just say "security check" and the Agent will automatically:
 3. **💡 Plan** — Generate three-tier hardening plans based on scan results (Basic / Standard / Strict)
 4. **🔧 Execute** — After you choose a plan, the Agent automatically modifies configuration and verifies
 
-### 🔒 Safe Install — Third-Party Skill Security Review
+### 🔒 guomeiqing-safe-install — Third-Party Skill Security Review
 
 Just say "install xxx skill" and the Agent won't install directly. Instead:
 
@@ -59,7 +59,7 @@ Just tell your Lobster:
 ```bash
 # Download and extract to skills directory
 cd ~/.openclaw/skills
-mkdir -p security-audit && cd security-audit
+mkdir -p guomeiqing-security-audit && cd guomeiqing-security-audit
 npm pack guomeiqing-security-audit && tar xzf guomeiqing-security-audit-*.tgz --strip-components=1 package/
 rm -f guomeiqing-security-audit-*.tgz
 ```
@@ -73,7 +73,7 @@ openclaw gateway restart
 Verify installation:
 
 ```bash
-openclaw skills list | grep security
+openclaw skills list | grep guomeiqing
 ```
 
 ## Usage
@@ -166,8 +166,8 @@ This repository also hosts all articles from the "OpenClaw Deep Dive · Security
 
 ## 🗺️ Roadmap
 
-- [x] security-audit Skill: One-click security health check + three-tier hardening
-- [x] safe-install Skill: Third-party Skill security review and installation
+- [x] guomeiqing-security-audit Skill: One-click security health check + three-tier hardening
+- [x] guomeiqing-safe-install Skill: Third-party Skill security review and installation
 - [x] Security series (Articles 1-2: Configuration Security)
 - [x] Security series (Article 3: Prompt Injection)
 - [x] Security series (Article 4: Trust Chain & Model Security)

@@ -1,4 +1,4 @@
-# 🦞🔒 Security Audit Skill
+# 🦞🔒 guomeiqing-security-audit
 
 One command to run a complete security self-check and hardening for your Lobster.
 

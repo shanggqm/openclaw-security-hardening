@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/shanggqm/openclaw-security-hardening",
-    "directory": "skills/safe-install"
+    "directory": "skills/guomeiqing-safe-install"
   },
   "homepage": "https://github.com/shanggqm/openclaw-security-hardening#safe-install",
   "files": [

@@ -295,7 +295,7 @@ OpenClaw 安全文档的建议很明确：如果你非要用小模型，那就**
 
 更好的做法是：**让 AI 自己审查 AI 的扩展。**
 
-我们正在开发一个 `safe-install` Skill（即将发布在 openclaw-security-hardening 仓库），它的工作方式是：
+我们正在开发一个 `guomeiqing-safe-install` Skill（即将发布在 openclaw-security-hardening 仓库），它的工作方式是：
 
 1. 你说"帮我装 xxx skill"
 2. Agent 先把 Skill 下载到**临时目录**（不是 workspace）
@@ -306,7 +306,7 @@ OpenClaw 安全文档的建议很明确：如果你非要用小模型，那就**
 
 **让机器做机器擅长的事——逐字逐句读完几百行 SKILL.md，人不需要参与这个过程。**
 
-在 `safe-install` 上线之前，你也可以手动检查：
+在 `guomeiqing-safe-install` 上线之前，你也可以手动检查：
 
 ```bash
 # 看看你装了哪些 Skill
@@ -337,7 +337,7 @@ grep -i "web_fetch\|exec\|curl\|http" ~/.openclaw/skills/some-skill/SKILL.md
 | 纯聊天（无工具） | 小模型都行 | messaging 或更低 |
 | 处理外部内容的 Agent | 必须大模型 | 收紧，不给 exec |
 
-OpenClaw 的 security-audit 检查项 7 就是专门检测"小模型 + 工具权限"这个危险组合的。跑一次就知道你有没有中招。
+OpenClaw 的 guomeiqing-security-audit 检查项 7 就是专门检测"小模型 + 工具权限"这个危险组合的。跑一次就知道你有没有中招。
 
 ### 4. Skill 权限隔离
 
@@ -376,7 +376,7 @@ OpenClaw 的 security-audit 检查项 7 就是专门检测"小模型 + 工具权
 
 ## 一键体检：你的 Skill 安全吗？
 
-这个系列每篇结尾都在推这个，因为它真的有用——我把这几篇文章的安全经验封装成了一个开源的 security-audit Skill。
+这个系列每篇结尾都在推这个，因为它真的有用——我把这几篇文章的安全经验封装成了一个开源的 guomeiqing-security-audit Skill。
 
 它扫描的 7 个维度里：
 
@@ -410,7 +410,7 @@ grep -ri "web_fetch\|exec\|curl\|http" ~/.openclaw/skills/*/SKILL.md
 
 如果 grep 输出了什么，认真看一眼——大部分可能是正常功能，但万一有你不认识的 URL 或可疑的数据收集行为，你就赚到了。
 
-当然，**我们更希望你以后不用手动做这件事。** `safe-install` Skill 正在开发中，上线后你的龙虾装任何新 Skill 之前，都会自动过一遍安检。关注 [openclaw-security-hardening](https://github.com/shanggqm/openclaw-security-hardening) 仓库获取更新。
+当然，**我们更希望你以后不用手动做这件事。** `guomeiqing-safe-install` Skill 正在开发中，上线后你的龙虾装任何新 Skill 之前，都会自动过一遍安检。关注 [openclaw-security-hardening](https://github.com/shanggqm/openclaw-security-hardening) 仓库获取更新。
 
 下一篇，我们聊隐私围栏——你的 MEMORY.md 里存着什么秘密？龙虾会不会在群聊里不小心说漏嘴？数据怎么进、怎么存、怎么出，每个环节都有坑。
 

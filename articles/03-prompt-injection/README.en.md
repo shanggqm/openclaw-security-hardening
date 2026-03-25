@@ -330,7 +330,7 @@ OpenClaw's content wrapping mechanism provides one layer of protection, but as d
 
 After all this, you're probably wondering: **How much risk does my current configuration carry?**
 
-I've packaged the security expertise from the first two articles and this one into an open-source security-audit Skill. It scans your OpenClaw configuration across 7 dimensions and outputs a health report.
+I've packaged the security expertise from the first two articles and this one into an open-source guomeiqing-security-audit Skill. It scans your OpenClaw configuration across 7 dimensions and outputs a health report.
 
 Installation — send this message directly to your Lobster:
 

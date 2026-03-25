@@ -1,4 +1,4 @@
-# 🔒 Safe Install — Third-Party Skill Security Review & Installation
+# 🔒 guomeiqing-safe-install — Third-Party Skill Security Review & Installation
 
 Automatically performs a 7-point security review before installing any third-party Skill. Only Skills that pass the review will be installed.
 

@@ -1,4 +1,4 @@
-# 🔒 Safe Install — 第三方 Skill 安全审查与安装
+# 🔒 guomeiqing-safe-install — 第三方 Skill 安全审查与安装
 
 安装第三方 Skill 前自动进行 7 项安全审查，只有通过审查的 Skill 才会被安装。
 

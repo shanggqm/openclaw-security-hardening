@@ -18,12 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ## [1.2.0] - 2026-03-25
 
 ### Added
-- **safe-install Skill**: Automated 7-point security review for third-party Skill installation
+- **guomeiqing-safe-install Skill**: Automated 7-point security review for third-party Skill installation
   - Downloads to isolated /tmp directory before any review
   - Checks: outbound data, credential access, dangerous exec, disguised behavior, privilege escalation, hidden instructions, script files
   - Generates human-readable audit report with ✅/⚠️/🔴 ratings
   - Auto-installs safe Skills, asks user confirmation for suspicious ones, rejects dangerous ones
-- Updated README with safe-install Skill description and roadmap
+- Updated README with guomeiqing-safe-install Skill description and roadmap
 
 ## [1.1.0] - 2026-03-24
 
@@ -37,7 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - CHANGELOG.md
 
 ### Changed
-- Moved security-audit skill to `skills/security-audit/`
+- Moved guomeiqing-security-audit skill to `skills/guomeiqing-security-audit/`
 - New root README with full ecosystem overview, roadmap, and article index
 - Updated series plan: articles 3-5 pivot to AI-native security topics (Prompt Injection, Trust Chain, Privacy)
 - Package.json updated with `repository.directory` field
@@ -45,7 +45,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ## [1.0.0] - 2026-03-22
 
 ### Added
-- Initial release of security-audit skill
+- Initial release of guomeiqing-security-audit skill
 - 7-dimension security scan (DM policy, Gateway, groups, tools, sandbox, file permissions, model security)
 - Scoring system (0-100)
 - Three-tier hardening plans (basic / standard / strict)
