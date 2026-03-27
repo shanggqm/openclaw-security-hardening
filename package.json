@@ -1,13 +1,14 @@
 {
-  "name": "guomeiqing-security-audit",
+  "name": "openclaw-security",
   "version": "1.3.0",
-  "description": "OpenClaw security audit & hardening skill — scan config, generate report, guided fix in 3 tiers",
+  "description": "OpenClaw security ecosystem — configuration audit, third-party Skill security review, hardening guides and article series",
   "keywords": [
     "openclaw",
     "security",
     "audit",
     "hardening",
     "skill",
+    "safe-install",
     "lobster",
     "agent"
   ],
@@ -15,12 +16,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shanggqm/openclaw-security-hardening",
-    "directory": "skills/guomeiqing-security-audit"
+    "url": "https://github.com/shanggqm/openclaw-security-hardening"
   },
   "homepage": "https://github.com/shanggqm/openclaw-security-hardening#readme",
   "files": [
-    "SKILL.md",
-    "README.md"
+    "skills/",
+    "README.md",
+    "README.en.md"
   ]
 }
