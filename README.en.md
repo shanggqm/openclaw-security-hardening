@@ -2,6 +2,10 @@
 
 # OpenClaw Security Hardening
 
+<p align="center">
+  <img src="banner.png" alt="OpenClaw Security Hardening" width="100%">
+</p>
+
 Security toolkit for OpenClaw: configuration audit Skill, third-party Skill installation review, and an accompanying security article series.
 
 ## Skills

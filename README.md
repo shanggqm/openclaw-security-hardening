@@ -2,6 +2,10 @@
 
 # OpenClaw Security Hardening
 
+<p align="center">
+  <img src="banner.png" alt="OpenClaw Security Hardening" width="100%">
+</p>
+
 OpenClaw 安全工具集：配置审计 Skill、第三方 Skill 安装审查，以及配套的安全连载文章。
 
 ## Skills
