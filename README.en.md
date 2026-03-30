@@ -1,63 +1,44 @@
 > 🇨🇳 [中文版](README.md)
 
-# 🦞🔒 OpenClaw Security Hardening
+# OpenClaw Security Hardening
 
-OpenClaw security ecosystem: configuration security audit, third-party Skill security review, and security article series. From the ["OpenClaw Deep Dive" Security Series](https://mp.weixin.qq.com/).
+Security toolkit for OpenClaw: configuration audit Skill, third-party Skill installation review, and an accompanying security article series.
 
-## What Is This?
+## Skills
 
-A collection of OpenClaw security Skills, containing two prompt-only Skills:
+### guomeiqing-security-audit — Configuration Security Audit
 
-### 🔍 guomeiqing-security-audit — Configuration Health Check
+Audits `openclaw.json` across 7 security dimensions, produces a scored report, and offers three hardening tiers (Basic / Standard / Strict). Once you pick a tier, it applies the changes and verifies automatically.
 
-Just say "security check" and the Agent will automatically:
+Audit items:
 
-1. **🔍 Scan** — Read `openclaw.json` and audit across 7 security dimensions
-2. **📊 Report** — Output a scored security report (0-100), each item marked ✅ PASS / ⚠️ WARN / 🔴 FAIL
-3. **💡 Plan** — Generate three-tier hardening plans based on scan results (Basic / Standard / Strict)
-4. **🔧 Execute** — After you choose a plan, the Agent automatically modifies configuration and verifies
+| # | Item | Risk Level | Description |
+|---|------|-----------|-------------|
+| 1 | DM Policy | Critical | Who can DM your bot — `open` means everyone |
+| 2 | Gateway Exposure | Critical | Bind address and auth configuration |
+| 3 | Group Chat Security | High | requireMention, group allowlist |
+| 4 | Tool Permissions | High | Whether Agent tool permissions are overly broad |
+| 5 | Sandbox Configuration | Medium | Sandbox mode and isolation level |
+| 6 | File Permissions | Medium | Config file chmod |
+| 7 | Model Security | High | Whether tool-enabled Agents use under-capable small models |
 
-### 🔒 guomeiqing-safe-install — Third-Party Skill Security Review
+### guomeiqing-safe-install — Third-Party Skill Security Review
 
-Just say "install xxx skill" and the Agent won't install directly. Instead:
+Runs a 7-point security review before installing any community Skill (outbound data, credential access, dangerous commands, disguised behavior, privilege escalation, hidden instructions, script files). Passes clean Skills through; blocks or escalates risky ones.
 
-1. **📥 Isolated Download** — Downloads to a /tmp temporary directory
-2. **🔍 7-Point Review** — Outbound data, credential access, dangerous commands, disguised behavior, privilege escalation, hidden instructions, script files
-3. **📊 Review Report** — Each item marked ✅ Safe / ⚠️ Suspicious / 🔴 Dangerous
-4. **✅ Decision** — Safe → auto-install, Suspicious → user confirmation, Dangerous → reject
-
-**Zero scripts, zero dependencies** — relies entirely on the Agent's built-in tools (read/edit/exec) for all operations.
-
-## Audit Items
-
-| # | Audit Item | Risk Level | Description |
-|---|-----------|------------|-------------|
-| 1 | DM Policy | 🔴 Critical | Who can DM your bot? `open` = everyone |
-| 2 | Gateway Network Exposure | 🔴 Critical | Gateway bind address and auth configuration |
-| 3 | Group Chat Security | 🟠 High | requireMention, group allowlist |
-| 4 | Tool Permissions | 🟠 High | Whether Agent tool permissions are overly broad |
-| 5 | Sandbox Configuration | 🟡 Medium | Sandbox mode and isolation level |
-| 6 | File Permissions | 🟡 Medium | chmod permissions for config files |
-| 7 | Model Security | 🟠 High | Whether tool-enabled Agents use small models |
+Both Skills are **prompt-only** (pure SKILL.md) with no script dependencies — all operations go through the Agent's built-in tools (read / edit / exec).
 
 ## Installation
 
-### Option 1: npm Install (Recommended)
+**npm (recommended):**
 
 ```bash
 openclaw skills install npm:guomeiqing-security-audit
 ```
 
-### Option 2: Let Your Lobster Install It
-
-Just tell your Lobster:
-
-> Install this security audit skill: npm:guomeiqing-security-audit, then run a security check for me right away.
-
-### Option 3: Manual Installation
+**Manual:**
 
 ```bash
-# Download and extract to skills directory
 cd ~/.openclaw/skills
 mkdir -p guomeiqing-security-audit && cd guomeiqing-security-audit
 npm pack guomeiqing-security-audit && tar xzf guomeiqing-security-audit-*.tgz --strip-components=1 package/
@@ -70,108 +51,57 @@ Restart Gateway after installation:
 openclaw gateway restart
 ```
 
-Verify installation:
-
-```bash
-openclaw skills list | grep guomeiqing
-```
-
 ## Usage
 
-Say any of the following to your Lobster:
+Say "security check", "run a security audit", or "security scan" to trigger the audit workflow.
 
-- "security check"
-- "run a security audit"
-- "harden my setup"
-- "security scan"
-
-The Agent will automatically start scanning and output a report.
-
-## Sample Output
-
-### Scan Report
+Sample output:
 
 ```
-🦞🔒 OpenClaw Security Scan Report
+OpenClaw Security Scan Report
 
 Scan Time: 2026-03-22 09:00
-Config File: ~/.openclaw/openclaw.json
+Config: ~/.openclaw/openclaw.json
 
-📊 Overview
+Overview
+Score: 65 / 100
+FAIL: 1 | WARN: 3 | PASS: 3
 
-| Security Score | 65 / 100 |
-|---------------|----------|
-| 🔴 FAIL | 1 item   |
-| ⚠️ WARN | 3 items  |
-| ✅ PASS | 3 items  |
-
-📋 Detailed Results
-
-| # | Audit Item        | Risk Level | Result | Description                          |
-|---|-------------------|-----------|--------|--------------------------------------|
-| 1 | DM Policy         | 🔴 Critical | ✅   | allowlist configured                  |
-| 2 | Gateway Exposure  | 🔴 Critical | ⚠️   | bind=lan, but auth token configured   |
-| 3 | Group Chat        | 🟠 High    | ✅   | groupPolicy=allowlist configured      |
-| 4 | Tool Permissions  | 🟠 High    | ⚠️   | 3 agents have full profile            |
-| 5 | Sandbox Config    | 🟡 Medium  | 🔴   | No sandbox configured                 |
-| 6 | File Permissions  | 🟡 Medium  | ⚠️   | Directory permission 755, suggest 700 |
-| 7 | Model Security    | 🟠 High    | ✅   | All tool-enabled agents use large models |
+Details
+1. DM Policy        [Critical]  PASS  — allowlist configured
+2. Gateway Exposure  [Critical]  WARN  — bind=lan, auth token present
+3. Group Chat        [High]      PASS  — groupPolicy=allowlist
+4. Tool Permissions  [High]      WARN  — 3 agents with full profile
+5. Sandbox Config    [Medium]    FAIL  — no sandbox configured
+6. File Permissions  [Medium]    WARN  — dir permission 755, recommend 700
+7. Model Security    [High]      PASS  — all tool-enabled agents use large models
 ```
 
-### Hardening Plan Selection
+After the audit you can pick a hardening tier:
 
-```
-Choose a hardening plan:
-
-🟢 Enter 1 → Basic Hardening (quick fix for the most dangerous issues)
-🟡 Enter 2 → Standard Hardening (Recommended! Balance security and usability)
-🔴 Enter 3 → Strict Hardening (Maximum security, for public-facing deployments)
-
-Or enter 0 → View report only, skip hardening
-```
-
-## Three-Tier Hardening Plans
-
-| Plan | Time | Use Case |
+| Tier | Time | Use Case |
 |------|------|----------|
-| 🟢 Basic Hardening | ~5 min | Fix the most dangerous issues (DM Policy, Gateway Auth, File Permissions) |
-| 🟡 Standard Hardening | ~10 min | Basic + Group Chat Protection + Sandbox + Role-based Tool Permissions |
-| 🔴 Strict Hardening | ~15 min | Standard + Full Sandboxing + Least Privilege + Gateway Loopback |
+| Basic | ~5 min | Fix highest-risk items (DM Policy, Gateway Auth, File Permissions) |
+| Standard | ~10 min | Basic + Group Chat protection + Sandbox + role-based tool permissions |
+| Strict | ~15 min | Standard + full sandboxing + least privilege + Gateway loopback |
 
-## Technical Details
+## Security Article Series
 
-This is a **prompt-only skill** (pure SKILL.md) with no scripts. All operations are performed through the Agent's built-in tools:
+All 5 articles from the "OpenClaw Deep Dive · Security Series" are archived in [`articles/`](articles/) along with original illustrations.
 
-- `read` — Read configuration files
-- `exec` — Check file permissions, backup config, restart Gateway
-- `edit` — Precisely modify configuration items
+| # | Title | Topic |
+|---|-------|-------|
+| 1 | [Is Your Lobster Running Naked?](articles/01-lobster-naked/) | Security overview and hands-on audit |
+| 2 | [Three Layers of Armor](articles/02-three-layers-armor/) | Security mental model: Access → Permissions → Sandbox |
+| 3 | [Can Your Lobster Be Turned? — Prompt Injection Explained](articles/03-prompt-injection/) | Direct / indirect injection, tool chain attacks, supply chain poisoning |
+| 4 | [Is Your Installed Skill Safe?](articles/04-skill-supply-chain/) | Skill supply chain, model risk, hidden instruction auditing |
+| 5 | [Don't Let Your Lobster Leak Secrets — Privacy Fences & Data Security](articles/05-privacy-fence/) | Memory leaks, group chat boundaries, key protection, data flow security |
 
-The Agent automatically backs up the config file before modifications and re-scans after hardening to confirm.
+## Roadmap
 
----
-
-## 📚 Security Article Series
-
-This repository also hosts all articles from the "OpenClaw Deep Dive · Security Series", with original illustrations archived.
-
-| # | Title | Core Topic | Status |
-|---|-------|-----------|--------|
-| 1 | [Is Your Lobster Running Naked?](articles/01-lobster-naked/) | Security overview: run an audit to see how exposed you are | ✅ Published |
-| 2 | [Three Layers of Armor](articles/02-three-layers-armor/) | Security mental model: Access Control → Permissions → Sandbox | ✅ Published |
-| 3 | [Can Your Lobster Be Turned? — Prompt Injection Explained](articles/03-prompt-injection/) | Direct injection, indirect injection, tool chain attacks, Skill supply chain | ✅ Published |
-| 4 | [Is Your Installed Skill Safe?](articles/04-skill-supply-chain/) | Skill supply chain attacks, model security, hidden instruction auditing | ✅ Published |
-| 5 | Don't Let Your Lobster Leak Secrets — Privacy Fences & Data Security | Memory leaks, group chat boundaries, key protection, data flow security | 📝 Planned |
-
----
-
-## 🗺️ Roadmap
-
-- [x] guomeiqing-security-audit Skill: One-click security health check + three-tier hardening
-- [x] guomeiqing-safe-install Skill: Third-party Skill security review and installation
-- [x] Security series (Articles 1-2: Configuration Security)
-- [x] Security series (Article 3: Prompt Injection)
-- [x] Security series (Article 4: Trust Chain & Model Security)
-- [ ] Security series (Article 5: Privacy Fences)
+- [x] guomeiqing-security-audit: one-click security audit + three-tier hardening
+- [x] guomeiqing-safe-install: third-party Skill security review
+- [x] Security series — all 5 articles complete
 - [ ] Threat model documentation
 - [ ] Least-privilege assistant Skill
 - [ ] Sandbox configuration wizard Skill
@@ -179,14 +109,11 @@ This repository also hosts all articles from the "OpenClaw Deep Dive · Security
 
 ## Contributing
 
-See [CONTRIBUTING.en.md](CONTRIBUTING.en.md). Issues, PRs, and security hardening tips are all welcome.
+See [CONTRIBUTING.en.md](CONTRIBUTING.en.md). Issues and PRs are welcome.
 
 ## Acknowledgments
 
-- [OpenClaw](https://github.com/openclaw/openclaw) — Making AI Agents accessible
-- Readers of the "OpenClaw Deep Dive" Security Series
-
-Lobsters need security — secure Lobsters are happy Lobsters 🦞✨
+- [OpenClaw](https://github.com/openclaw/openclaw)
 
 ## License
 
